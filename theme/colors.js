@@ -21,7 +21,7 @@ export const colors = {
     200: blue.blue7,
     300: blue.blue8,
     400: blueDark.blue11,
-    500: blueDark.blue10,
+    500: blueDark.grass10,
     600: blueDark.blue9,
     700: blueDark.blue8,
     800: blueDark.blue6,
