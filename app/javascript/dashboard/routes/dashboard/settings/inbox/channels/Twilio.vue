@@ -6,7 +6,6 @@ import { useAlert } from 'dashboard/composables';
 import { required } from '@vuelidate/validators';
 import router from '../../../../index';
 import { isPhoneE164OrEmpty } from 'shared/helpers/Validators';
-import { parseAPIErrorResponse } from 'dashboard/store/utils/api';
 
 export default {
   props: {
@@ -102,10 +101,7 @@ export default {
           },
         });
       } catch (error) {
-        const errorMessage =
-          parseAPIErrorResponse(error) ||
-          this.$t('INBOX_MGMT.ADD.TWILIO.API.ERROR_MESSAGE');
-        useAlert(errorMessage);
+        useAlert(this.$t('INBOX_MGMT.ADD.TWILIO.API.ERROR_MESSAGE'));
       }
     },
   },

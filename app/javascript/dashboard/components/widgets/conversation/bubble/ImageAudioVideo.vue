@@ -31,9 +31,6 @@ export default {
       show: false,
       isImageError: false,
       isImageErrorDelay: false,
-      retryCount: 0,
-      maxRetries: 5,
-      retryDelay: 500,
     };
   },
   computed: {
@@ -93,17 +90,9 @@ export default {
       }
       this.show = true;
     },
-    onImgError(e) {
-      if (this.retryCount < this.maxRetries) {
-        setTimeout(() => {
-          e.target.src = this.attachment.data_url;
-          this.retryCount++;
-        }, this.retryDelay);
-      } else {
-        console.error(`Failed to load image after ${this.maxRetries} attempts.`);
-        this.isImageError = true;
-        this.$emit('error');
-      }
+    onImgError() {
+      this.isImageError = true;
+      this.$emit('error');
     },
     onImgErrorDelay() {
       setTimeout(() => {
